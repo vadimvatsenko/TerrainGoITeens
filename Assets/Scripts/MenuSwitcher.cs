@@ -12,28 +12,39 @@ public class MenuSwitcher : MonoBehaviour
     [Header("Menu")]
     [SerializeField] private GameObject mainMenuPanel;
     [SerializeField] private GameObject settingsMenuPanel;
-    //[SerializeField] private GameObject levelSelectMenuPanel;
+    [SerializeField] private GameObject levelSelectMenuPanel;
     
     [Header("Buttons")]
     [SerializeField] private Button exitButton;
-    [SerializeField] private Button backMenumenuButton;
+    [SerializeField] private Button[] backMenumenuButton;
     [SerializeField] private Button settingsButton;
-    //[SerializeField] private Button levelSelectButton;
+    [SerializeField] private Button levelSelectButton;
 
     private void OnEnable()
     {
         exitButton.onClick.AddListener(ExitGame);
-        backMenumenuButton.onClick.AddListener(ShowMainMenu);
+
+        foreach (Button button in backMenumenuButton)
+        {
+            button.onClick.AddListener(ShowMainMenu);
+        }
+        
+        
         settingsButton.onClick.AddListener(ShowSettingsMenu);
-        //levelSelectButton.onClick.AddListener(ShowLevelSelectMenu);
+        levelSelectButton.onClick.AddListener(ShowLevelSelectMenu);
     }
 
     private void OnDisable()
     {
         exitButton.onClick.RemoveListener(ExitGame);
-        backMenumenuButton.onClick.RemoveListener(ShowMainMenu);
+        
+        foreach (Button button in backMenumenuButton)
+        {
+            button.onClick.RemoveAllListeners();
+        }
+        
         settingsButton.onClick.RemoveListener(ShowSettingsMenu);
-        //levelSelectButton.onClick.RemoveListener(ShowLevelSelectMenu);
+        levelSelectButton.onClick.RemoveListener(ShowLevelSelectMenu);
     }
 
     private void Start()
@@ -56,14 +67,14 @@ public class MenuSwitcher : MonoBehaviour
     private void ShowLevelSelectMenu()
     {
         HideAllMenus();
-        //levelSelectMenuPanel.SetActive(true);
+        levelSelectMenuPanel.SetActive(true);
     }
 
     private void HideAllMenus()
     {
         mainMenuPanel.SetActive(false);
         settingsMenuPanel.SetActive(false);
-        //levelSelectMenuPanel.SetActive(false);
+        levelSelectMenuPanel.SetActive(false);
     }
 
     public void ExitGame()
