@@ -1,6 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+// новый учень Святослав, що вмієЮ на чому зупинився.
+
+// продовжуємо верстати UI, зробимо перемикач рівнів, розглянемо Домашку
+// Кахут по UI буде завтра
+// Input manager розглянемо завтра
+
 public class MenuSwitcher : MonoBehaviour
 {
     [Header("Menu")]
