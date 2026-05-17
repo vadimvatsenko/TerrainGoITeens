@@ -33,6 +33,7 @@ public class Movement : MonoBehaviour
     private Vector3 _groundNormal = Vector3.up;
     private bool _onTooSteepSlope;
 
+    
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -43,6 +44,7 @@ public class Movement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
+    
 
     private void FixedUpdate()
     {
@@ -55,7 +57,7 @@ public class Movement : MonoBehaviour
         IsGrounded();
         Jump();
         Look();
-        Fire();
+        //Fire();
     }
 
     private void Fire()
